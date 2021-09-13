@@ -1,0 +1,119 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="form-styles.css"/>
+        <title>Thank you</title>
+        
+        <script language="Javascript">
+            // Global variables
+            var languageKey;
+            var formData = {};
+            
+            window.onload = (event) => {
+  				onLoad();
+			};
+
+            function getJSON(url, callback) {
+				console.log("calling to fetch:", url);
+                var xhr = new XMLHttpRequest();
+                    xhr.open('GET', url, true);
+                    xhr.responseType = 'json';
+                    xhr.onload = function() {
+                        var status = xhr.status;
+                        if (status === 200) {
+                            callback(null, xhr.response);
+                        } else {
+                            callback(status, xhr.response);
+                        }
+                    };
+                xhr.send();
+            };    
+
+            function onLoad() {
+                userLang = navigator.language || navigator.userLanguage; 
+                if (localStorage.languageKey!=null) {
+                    languageKey=localStorage.languageKey;
+                    console.log("Found saved language, will use it:", languageKey);
+                } else {
+                    languageKey = userLang.substring(0,2);
+                    console.log("user language is", userLang, "so we will use languageKey as:", languageKey);
+                }
+                console.log("The page has loaded....");
+                currentLanguage = getLanguageInfo(languageKey);
+                console.log("info about the selected language:", currentLanguage);
+            	getJSON("instore.json", formLoaded);
+            }
+
+            function formLoaded(err, data) {
+                formData = data;
+                console.log("form data is now ready.");
+                changeLanguage(languageKey);
+            }
+
+            function getLanguageInfo(ISOstring) {
+                var languages = [
+                        { "ISO" : ["en", "en-GB", "en-US"], "name": "English", "flag" : "united-kingdom.png", "element": "flagEN"},
+                        { "ISO" : ["es", "es-ES"], "name": "Español", "flag" : "spain.png", "element": "flagES"},
+                        { "ISO" : ["de"], "name": "Deutsch", "flag" : "germany.png", "element": "flagDE"}
+                    ];
+                // Lookup the language
+                if (ISOstring==null) ISOstring = "en-GB";
+                var languageInfo = {};
+                for (var l of languages) {
+                    for (var iso of l.ISO) {
+                        if (iso==ISOstring) {
+                            languageInfo = l;
+                            break;
+                        }
+                    }
+                }
+                return languageInfo;
+            }
+
+            function changeLanguage(ISOstring) {
+                document.getElementById(currentLanguage.element).style = "border: 1px solid white;";
+                console.log("Changing the language...from:", currentLanguage.ISO, "to:", ISOstring);
+                currentLanguage = getLanguageInfo(ISOstring);
+                languageKey = ISOstring.substring(0,2);
+                
+                // Store the change
+                localStorage.languageKey = languageKey;
+
+                // Change the text
+                document.getElementById(currentLanguage.element).style = "border: 1px solid black;";
+                const property = "text_" + languageKey;
+                document.title = formData.answer.title[property];
+                document.getElementById("heading").innerText = formData.answer.heading[property];
+                document.getElementById("paragraph").innerHTML = formData.answer.paragraph[property];
+                document.getElementById("link").innerHTML = formData.answer.link[property];
+            }
+
+		</script>
+
+    </head>
+
+	<body>
+		<table>
+            <tr>
+                <td onclick="changeLanguage('en')" style="border: 1px solid white;">
+                    <img id="flagEN" src="images/united-kingdom.png" width="32px" height="32px"></p>
+                </td>
+                <td onclick="changeLanguage('es')" style="border: 1px solid white;">
+                    <img id="flagES" src="images/spain.png" width="32px" height="32px"></p>
+                </td>
+                <td onclick="changeLanguage('de')" style="border: 1px solid white;">
+                    <img id="flagDE" src="images/germany.png" width="32px" height="32px"></p>
+                </td>
+            </tr>
+        </table>
+        <p>
+            <img src="images/donmanuel.png" id="logo" width="60%">
+			<h1><span id="heading"></span></h1>
+		</p>
+        <p id="paragraph">Thank you for your feedback.</p>
+		<p id="link"></p>
+    </p>
+    <hr>
+    <img src="images/opinana.png" width="30">
+
+	</body>
+</html>

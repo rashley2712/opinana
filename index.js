@@ -6,7 +6,9 @@ app.get('/', (req, res) => {
   res.send('Hello World!<br/>This is Opinana.')
 })
 
+app.use(express.static('/var/www/opinana'));
+
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log(`opinana is listening on http://localhost:${port}`)
 })
 

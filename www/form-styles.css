@@ -1,0 +1,33 @@
+body {
+	font-size:100%;
+	font-family:verdana,arial,'sans serif';
+	background-repeat:repeat-x;
+	background-color:#fffbf2;
+	color:#251b03;
+	margin: 10pt;
+	}
+
+h1 {font-size:200%;}
+h2 {font-size:140%;}
+h3 {font-size:110%;}
+
+
+table {font-size:100%;}
+
+th {background-color:#e0e8eb;}
+
+td {
+	vertical-align:center;
+	text-align:center;
+	padding:5px;
+	}
+
+ul {list-style:circle;}
+
+ol {list-style:decimal;}
+
+
+p {
+	line-height: 20px;   /* within paragraph */
+	margin-bottom: 30px; /* between paragraphs */
+	};

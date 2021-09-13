@@ -1,0 +1,477 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="form-styles.css"/>
+        <title>form</title>
+        <!--<script src="https://www.google.com/recaptcha/api.js"></script>        -->
+        <script language="Javascript">
+            // Global variables
+            var userLang;
+            var currentLanguage;
+            var languageKey;
+            var questionList = [];
+            var questionData;
+            function getJSON(url, callback) {
+				console.log("calling to fetch:", url);
+                var xhr = new XMLHttpRequest();
+                    xhr.open('GET', url, true);
+                    xhr.responseType = 'json';
+                    xhr.onload = function() {
+                        var status = xhr.status;
+                        if (status === 200) {
+                            callback(null, xhr.response);
+                        } else {
+                            callback(status, xhr.response);
+                        }
+                    };
+                xhr.send();
+            };    
+
+            function onSubmit(token) {
+                document.getElementById("form").submit();
+            }
+			
+            window.onload = (event) => {
+  				onLoad();
+			};
+
+            function onLoad() {
+                userLang = navigator.language || navigator.userLanguage; 
+                if (localStorage.languageKey!=null) {
+                    languageKey=localStorage.languageKey;
+                    console.log("found saved language, will use it:", languageKey);
+                } else languageKey = userLang.substring(0,2);
+                console.log("The page has loaded....");
+                console.log("user language is", userLang);
+                currentLanguage = getLanguageInfo(languageKey);
+            	getJSON("instore.json", languagesLoaded);
+            }
+
+            function languagesLoaded(err, data) {
+                console.log("Languages loaded...");
+                console.log(data);
+                questionData = data;
+                questionList = [];
+                for (q of questionData.questions) {
+                    console.log(q.sequence);
+                    var status = { sequence: q.sequence, visible: false};
+                    questionList.push(status); 
+                }
+                questionList[0].visible = true;
+                document.title = questionData.title;
+                renderForm();
+                changeLanguage(languageKey);
+                //console.log("Question status:", questionList);
+			}
+
+			function renderFormOld(err, data) {
+				console.log("Received JSON data...");
+				console.log(data);
+                document.getElementById("logo").src = data.logo;
+				document.getElementById("title").innerText = data.title;
+                document.title = data.title;
+                for (question of data.questions) {
+                    const questionParagraph = document.createElement("p");
+                    const questionContent = document.createTextNode(question[languageKey]);
+                    questionParagraph.appendChild(questionContent);
+                    var newline = document.createElement('br');
+                    questionParagraph.appendChild(newline);
+                
+                    
+                    createRadioElement(question.options, questionParagraph)
+                    
+                    var container = document.getElementById('container');
+                    container.appendChild(questionParagraph);
+                }
+                
+			}
+
+            function createRadioElement(questionID, options, container) {
+                for (var option of options) {
+                    var radiobox = document.createElement('input');
+                    radiobox.type = 'radio';
+                    radiobox.id = questionID + '_' + option.answer;
+                    radiobox.name = questionID;
+                    radiobox.value = option.answer;
+                    radiobox.setAttribute("onchange", "nextQuestion('" + option.next + "')");
+                    const property = "text_" + languageKey;
+                    var label = document.createElement('label')
+                    label.htmlFor = radiobox.id;
+                    const textSpan = document.createElement("span");
+                    textSpan.setAttribute("id", radiobox.id + "_text");
+                    var description = document.createTextNode(option[property]);
+                    textSpan.appendChild(description);
+                    label.appendChild(textSpan);
+                
+                    var newline = document.createElement('br');
+                
+                    container.appendChild(radiobox);
+                    container.appendChild(label);
+                    container.appendChild(newline);
+                    }
+            }
+
+            function createLikertElement(questionID, scale, options, container) {
+                const property = "text_" + languageKey;
+                console.log("creating a likert block");
+                const cellWidth = Math.round(100/(scale.length+1)).toString() + "%";
+                console.log("cell width", cellWidth)
+                var tableContainer = document.createElement('table');
+                tableContainer.style.width="100%";
+                var tableRow = document.createElement("tr");
+                var tableHeader = document.createElement("td");
+                var scaleLabel = document.createTextNode("");
+                tableHeader.appendChild(scaleLabel);
+                tableRow.appendChild(tableHeader);
+                for (var s of scale) {
+                    // console.log(s);
+                    tableHeader = document.createElement("td");
+                    tableHeader.id = questionID + "_" + s.answer;
+                    scaleLabel = document.createTextNode(s[property]);
+                    tableHeader.appendChild(scaleLabel);
+                    tableRow.appendChild(tableHeader);
+                }
+                tableContainer.appendChild(tableRow);
+                var index=0;
+                for (o of options) {
+                    console.log(index, o);
+                    var tableRow = document.createElement("tr");
+                    if ((index++ % 2)==0) tableRow.style.background="#f3f3f3";  else tableRow.style.background="#e9eaea";
+                    var tableData = document.createElement("td");
+                    tableData.style.textAlign = "left";
+                    var groupDescription = document.createTextNode(o[property]);
+                    tableData.appendChild(groupDescription);
+                    tableData.id = questionID + "_group_" + o.group;
+                    tableRow.appendChild(tableData);
+                    for (var s of scale) {
+                        tableData = document.createElement("td");
+                        tableData.style.width = cellWidth;
+                        var radioButton = document.createElement("input");
+                        radioButton.type = 'radio';
+                        radioButton.id = questionID + '_' + s.answer;
+                        radioButton.name = questionID + '_' + o.group;
+                        radioButton.value = s.answer;
+                        radioButton.setAttribute("onchange","nextQuestion('" + s.next + "')");
+                        tableData.appendChild(radioButton);
+                        tableRow.appendChild(tableData);
+                    }
+                    //var groupDescription = document.createTextNode(o['text_en']);
+                    //tableData.appendChild(groupDescription);
+                    //tableRow.appendChild(tableData);
+                    tableContainer.appendChild(tableRow);
+                }
+                container.appendChild(tableContainer);
+
+            }
+
+            function createRulerElement(questionID, scale, container) {
+                const property = "text_" + languageKey;
+                console.log("Creating a ruler element...");
+                var tableElement = document.createElement("table");
+                tableElement.style.width="100%";
+                // tableElement.border = "1px";
+                
+               
+                
+                // Add the scale
+                const lower = parseInt(scale.lower.value);
+                const upper = parseInt(scale.upper.value);
+                cellWidth = Math.round(100/(upper-lower+1)).toString() + "%";
+                tableRow = document.createElement("tr");
+                for (var index=lower; index<=upper; index++) {
+                    console.log(index);
+                    tableData = document.createElement("td");
+                    tableData.style.width=cellWidth;
+                    tableData.id = questionID + "_" + index;
+                    tableData.style.border = "1px solid #999";
+                    tableData.setAttribute("onclick","selectRuler('" + questionID + "','" + index.toString() + "')");
+                    text = document.createTextNode(index.toString());
+                    tableData.appendChild(text);
+                    tableRow.appendChild(tableData);
+                }
+                tableElement.appendChild(tableRow);
+
+                leftSpan = ((upper-lower)+1) >> 1;
+                rightSpan = ((upper-lower)+1) - leftSpan;
+                
+                // Add the upper and lower labels
+                var tableRow = document.createElement("tr");
+                var tableData = document.createElement("td");
+                text = document.createTextNode(scale.lower[property]);
+                tableData.appendChild(text);
+                tableData.id = questionID + "_lower";
+                tableData.style.textAlign = "left";
+                // tableData.setAttribute("border", "1px");
+                tableData.setAttribute("colspan", leftSpan.toString());
+                tableRow.appendChild(tableData); 
+                tableData = document.createElement("td");
+                text = document.createTextNode(scale.upper[property]);
+                tableData.appendChild(text);
+                tableData.style.textAlign = "right";
+                tableData.setAttribute("colspan", rightSpan.toString());
+                tableData.id = questionID + "_upper";
+                tableRow.appendChild(tableData); 
+                tableElement.appendChild(tableRow);
+
+                inputElement = document.createElement("input");
+                inputElement.type="hidden";
+                inputElement.name=questionID;
+                inputElement.id = questionID + "_value";
+                inputElement.value=0;
+
+                container.appendChild(tableElement);
+                container.appendChild(inputElement);
+
+            }
+
+        function selectRuler(questionID, value) {
+            var element = document.getElementById(questionID + "_value");
+            var oldValue = element.value;
+            if (oldValue==value) return;
+            element.value = value;
+            var oldCell = document.getElementById(questionID + "_" + oldValue);
+            var newCell = document.getElementById(questionID + "_" + value);
+            console.log("Changing value in ruler", questionID, "from", oldValue, "to", value); 
+            oldCell.style.background=null;
+            newCell.style.background="#e9e8e8";
+            console.log(element);
+        }
+
+        function getLanguageInfo(ISOstring) {
+            var languages = [
+                    { "ISO" : ["en", "en-GB", "en-US"], "name": "English", "flag" : "united-kingdom.png", "elements": ["flagEN", "flagEN_footer"]},
+                    { "ISO" : ["es", "es-ES"], "name": "Español", "flag" : "spain.png", "elements": ["flagES", "flagES_footer"]},
+                    { "ISO" : ["de"], "name": "Deutsch", "flag" : "germany.png", "elements": ["flagDE", "flagDE_footer"]}
+                ];
+            // Lookup the language
+            if (ISOstring==null) ISOstring = "en-GB";
+            var languageInfo = {};
+            for (var l of languages) {
+                for (var iso of l.ISO) {
+                    if (iso==ISOstring) {
+                        languageInfo = l;
+                        break;
+                    }
+                }
+            }
+            return languageInfo;
+        }
+
+        function changeLanguage(ISOstring) {
+            for (var e of currentLanguage.elements) document.getElementById(e).style = "border: 1px solid white;";
+            console.log("Changing the language...from:", currentLanguage.ISO, "to:", ISOstring);
+            currentLanguage = getLanguageInfo(ISOstring);
+            console.log("selected language", currentLanguage);
+            for (var e of currentLanguage.elements) document.getElementById(e).style = "border: 1px solid black;";
+
+            languageKey = ISOstring.substring(0,2);
+            localStorage.languageKey = languageKey;
+            var property = "text_" + languageKey;
+
+            document.getElementById("heading").innerText = questionData.heading[property];
+            document.getElementById("introduction").innerText = questionData.introduction[property];
+            
+            for (questionBlock of questionList) {
+                if (!questionBlock.visible) {
+                    console.log(questionBlock.sequence, "is not visible. Skipping.");
+                    continue;
+                }
+                console.log(questionBlock.sequence);
+                element = questionBlock.sequence + "_text";
+                for (var q of questionData.questions) {
+                    if (q.sequence==questionBlock.sequence) {
+                        text = q[property];
+                        console.log("element to set", element);
+                        document.getElementById(element).innerText = text;
+                        options = q.options;
+                        console.log(options);
+                        if (q.type=="radio")
+                            for (var o of options) {
+                                element = questionBlock.sequence + "_" + o.answer + "_text";
+                                console.log(element);
+                                console.log(o[property]);
+                                console.log("element to set", element);
+                                document.getElementById(element).innerText = o[property];
+                           }
+                        if (q.type=="likert") {
+                            for (var s of q.scale) {
+                                element = document.getElementById(questionBlock.sequence + "_" + s.answer);
+                                element.innerText = s[property];
+                                console.log(element, s[property]);
+                            }
+                            for (var o of q.options) {
+                                element = document.getElementById(questionBlock.sequence + "_group_" + o.group);
+                                element.innerText = o[property];
+                                console.log(element, o[property]);     
+                            }
+                        }
+                        if (q.type=="ruler") {
+                                element = document.getElementById(questionBlock.sequence + "_lower");
+                                element.innerText = q.scale.lower[property];
+                                element = document.getElementById(questionBlock.sequence + "_upper");
+                                element.innerText = q.scale.upper[property];
+                        }
+                    }
+                }
+
+            }
+            
+            property = "text_" + languageKey;
+  
+            document.getElementById("submit").value = questionData.submit[property];
+            
+        }
+
+        function renderForm() {
+            console.log("Rendering form...");
+            console.log("Questions", questionList);
+            for (var questionID of questionList) {
+                if (!questionID.visible) continue;
+                var question;
+                for (var q of questionData.questions) if (q.sequence==questionID.sequence) question = q;
+                const questionParagraph = document.createElement("p");
+                questionParagraph.setAttribute("id", questionID.sequence);
+                const questionText = document.createElement("div");
+                questionText.setAttribute("id", questionID.sequence + "_text")
+                property = "text_" + languageKey;
+                const questionContent = document.createTextNode(question[property]);
+                questionText.appendChild(questionContent);
+                questionParagraph.appendChild(questionText);
+                var newline = document.createElement('br');
+                questionParagraph.appendChild(newline);
+                if (question.type=="radio") createRadioElement(questionID.sequence, question.options, questionParagraph)
+                
+                var container = document.getElementById('container');
+                container.appendChild(questionParagraph);
+
+            }
+        }
+
+        function nextQuestion(questionID) {
+            console.log("Proceeding to the next question...");
+            if (document.getElementById(questionID)!=null) {
+                console.log("Question", questionID, "has already appeared. Skipping.");
+                return;
+            }
+            // Check for a switch from option _a to _b
+            if (questionID.length>3) {
+                console.log("this is a conditional question...");
+                var questionsToRemove = [];
+                for (var q of questionList) if (q.sequence.includes(questionID.substring(0,3))) questionsToRemove.push(q.sequence);
+                console.log("questions to remove:", questionsToRemove);
+                for (var q of questionsToRemove) {
+                    var element = document.getElementById(q);
+                    if (element!=null)element.parentElement.removeChild(element);
+                    // update question status in the questionList
+                    for (var ql of questionList) {
+                        if (ql.sequence==q) ql.visible = false;
+                    }
+                }
+            }
+            var question;
+            for (var q of questionData.questions) {
+                if (q.sequence==questionID) question = q;
+            }
+            console.log(question);
+            const questionParagraph = document.createElement("p");
+            questionParagraph.setAttribute("id", questionID);
+            const questionText = document.createElement("div");
+            questionText.setAttribute("id", questionID + "_text")
+            property = "text_" + languageKey;
+            const questionContent = document.createTextNode(question[property]);
+            questionText.appendChild(questionContent);
+            questionParagraph.appendChild(questionText);
+            var newline = document.createElement('br');
+            questionParagraph.appendChild(newline);
+            
+            if (question.type=="radio") createRadioElement(questionID, question.options, questionParagraph);
+            if (question.type=="likert") createLikertElement(questionID, question.scale, question.options, questionParagraph);
+            if (question.type=="ruler") createRulerElement(questionID, question.scale, questionParagraph);
+            
+            
+            var container = document.getElementById('container');
+            container.appendChild(questionParagraph);
+
+            // update question status in the questionList
+            for (q of questionList) {
+                if (q.sequence==questionID) q.visible = true;
+            }
+            console.log("Question list:", questionList);
+
+            // Sort the DOM in question order
+            var ql = [];
+            for (q of questionList) {
+                if (q.visible) ql.push(q.sequence);
+            }
+            console.log("visible questions are:", ql);
+            // get children of 'container'
+            console.log(container.children);
+            for (var q of ql) {
+                for (var child of container.children) {
+                    if (child.id==q) container.appendChild(child);
+                }
+            }
+        }
+        
+
+		</script>
+
+        <style>
+         
+        </style>
+    </head>
+
+	<body>
+		<table>
+            <tr>
+                <td onclick="changeLanguage('en')" style="border: 1px solid white;">
+                    <img id="flagEN" src="images/united-kingdom.png" width="32px" height="32px"></p>
+                </td>
+                <td onclick="changeLanguage('es')" style="border: 1px solid white;">
+                    <img id="flagES" src="images/spain.png" width="32px" height="32px"></p>
+                </td>
+                <td onclick="changeLanguage('de')" style="border: 1px solid white;">
+                    <img id="flagDE" src="images/germany.png" width="32px" height="32px"></p>
+                </td>
+            </tr>
+        </table>
+        <p>
+            <img src="images/donmanuel.png" id="logo" width="60%">
+			<h1 id="title"></h1>
+		</p>
+        <h1 id="heading">[Heading]</h1>
+        <p id="introduction">[Introduction]</p>
+        <form id="form" action="answer.html" method="get">
+            <div id='container'></div>
+            <input type="submit" id="submit" value="Submit"/>
+           
+        </form>
+    </p>
+    <p>
+        <table>
+            <tr>
+                <td onclick="changeLanguage('en')" style="border: 1px solid white;">
+                    <img id="flagEN_footer" src="images/united-kingdom.png" width="32px" height="32px"></p>
+                </td>
+                <td onclick="changeLanguage('es')" style="border: 1px solid white;">
+                    <img id="flagES_footer" src="images/spain.png" width="32px" height="32px"></p>
+                </td>
+                <td onclick="changeLanguage('de')" style="border: 1px solid white;">
+                    <img id="flagDE_footer" src="images/germany.png" width="32px" height="32px"></p>
+                </td>
+            </tr>
+        </table>
+    </p>
+    <hr>
+    <img src="images/opinana.png" width="30">
+
+     <!--<button class="g-recaptcha" 
+                data-sitekey="6Lf16VUcAAAAAKe3gJhnbAZyqoPpWq9dPNXZTMkM" 
+                data-callback='onSubmit' 
+                data-action='submit' id="submit"><span id="submitText">Submit</span></button> 
+                <p>
+                    <div>6. How likely are you to recommend us to a friend or colleague?</div>
+                    <input type="range" id="vol" name="vol" min="0" max="50">
+                </p>
+            -->
+	</body>
+</html>
