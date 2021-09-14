@@ -160,7 +160,33 @@
                     tableContainer.appendChild(tableRow);
                 }
                 container.appendChild(tableContainer);
+            }
 
+            function createCheckboxElement(questionID, options, container) {
+                console.log("... creating a checkbox...");
+                console.log(options);
+                for (var option of options) {
+                    var checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    checkbox.id = questionID + '_' + option.answer;
+                    checkbox.name = questionID;
+                    checkbox.value = option.answer;
+                    checkbox.setAttribute("onchange", "nextQuestion('" + option.next + "')");
+                    const property = "text_" + languageKey;
+                    var label = document.createElement('label')
+                    label.htmlFor = checkbox.id;
+                    const textSpan = document.createElement("span");
+                    textSpan.setAttribute("id", checkbox.id + "_text");
+                    var description = document.createTextNode(option[property]);
+                    textSpan.appendChild(description);
+                    label.appendChild(textSpan);
+                
+                    var newline = document.createElement('br');
+                
+                    container.appendChild(checkbox);
+                    container.appendChild(label);
+                    container.appendChild(newline);
+                    }
             }
 
             function createRulerElement(questionID, scale, container) {
@@ -168,9 +194,6 @@
                 console.log("Creating a ruler element...");
                 var tableElement = document.createElement("table");
                 tableElement.style.width="100%";
-                // tableElement.border = "1px";
-                
-               
                 
                 // Add the scale
                 const lower = parseInt(scale.lower.value);
@@ -386,7 +409,7 @@
             if (question.type=="radio") createRadioElement(questionID, question.options, questionParagraph);
             if (question.type=="likert") createLikertElement(questionID, question.scale, question.options, questionParagraph);
             if (question.type=="ruler") createRulerElement(questionID, question.scale, questionParagraph);
-            
+            if (question.type=="checkbox") createCheckboxElement(questionID, question.options, questionParagraph);
             
             var container = document.getElementById('container');
             container.appendChild(questionParagraph);

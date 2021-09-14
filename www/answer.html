@@ -7,10 +7,41 @@
             // Global variables
             var languageKey;
             var formData = {};
+            const queryString = window.location.search;
+            console.log(queryString);
+            const urlParams = new URLSearchParams(queryString);
+            var answers = [];
+            for (var key of urlParams.keys()) {
+                console.log(key, urlParams.get(key));
+                answers.push({ 'question': key, 'answer' : urlParams.get(key)});
+            }
+            console.log(answers);
             
             window.onload = (event) => {
   				onLoad();
 			};
+
+            function postJSON(url, params) {
+                console.log("posting... to:", url);
+                console.log("data", JSON.stringify(params));
+                var http = new XMLHttpRequest();
+                http.open('POST', url, true);
+
+                //Send the proper header information along with the request
+                http.setRequestHeader('Content-type', 'application/json');
+                // http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                
+
+                http.onreadystatechange = function() {
+                    //Call a function when the state changes.
+                    if(http.readyState == 4 && http.status == 200) {
+                    console.log("Server responded with:", http.responseText);
+                    }
+                }
+
+                http.send(JSON.stringify(params));
+            }    
+            
 
             function getJSON(url, callback) {
 				console.log("calling to fetch:", url);
@@ -41,6 +72,7 @@
                 currentLanguage = getLanguageInfo(languageKey);
                 console.log("info about the selected language:", currentLanguage);
             	getJSON("instore.json", formLoaded);
+                postJSON("answer", answers);
             }
 
             function formLoaded(err, data) {

@@ -4,12 +4,12 @@
 	"bgcolor": "#fffbf2",
 	"heading": { 
 		"text_en" : "We want to hear from you.", 
-		"text_es" : "(ES) We want to hear from you.",
+		"text_es" : "Nos gustaría saber de usted!",
 		"text_de" : "Wir möchten gerne Ihre Opinion kennenlernen."
 	},
 	"introduction" : {
 		"text_en" : "We love our customers and always strive to offer a more enjoying experience. Please take a moment and let us know how we are doing. Thank you!",
-		"text_es" : "(ES) We love our customers and always strive to offer a more enjoying experience. Please take a moment and let us know how we are doing. Thank you!  ",
+		"text_es" : "Le agradeceremos que nos dedique un momento para saber cómo lo estamos haciendo. ¡Gracias!",
 		"text_de" : "Wir lieben unsere Kunden und sind stets bestrebt, ihnen eine angenehme Erfahrung zu bieten. Bitte nehmen Sie sich einen Moment Zeit und lassen Sie uns wissen ob wir unsere Arbeit gut machen. Vielen Dank!"
 	},
 	"answer": {
@@ -36,9 +36,9 @@
 				"text_de" : "1. Wie oft besuchen Sie El Café de Don Manuel?",
 				"type" : 	"radio",
 			  "options": [ 
-				  { "answer" : 1, "next" : "Q02", "text" : "This is my first time.", "text_en":"This is my first time.", "text_es": "Esta es la primera vez.", "text_de": "Das ist mein erstes Mal."},
-				  { "answer" : 2, "next" : "Q02", "text" : "Once per week.", "text_en":"Once per week.", "text_es": "Una vez al semana.", "text_de": "Einmal pro Woche."},
-				  { "answer" : 3, "next" : "Q02", "text" : "More than once per week.", "text_en":"More than once per week.", "text_es": "Más de una vez al semana.", "text_de": "Mehr als einmal pro Woche."}  
+				  { "answer" : 1, "next" : "Q04", "text" : "This is my first time.", "text_en":"This is my first time.", "text_es": "Esta es la primera vez.", "text_de": "Das ist mein erstes Mal."},
+				  { "answer" : 2, "next" : "Q04", "text" : "Once per week.", "text_en":"Once per week.", "text_es": "Una vez al semana.", "text_de": "Einmal pro Woche."},
+				  { "answer" : 3, "next" : "Q04", "text" : "More than once per week.", "text_en":"More than once per week.", "text_es": "Más de una vez al semana.", "text_de": "Mehr als einmal pro Woche."}  
 				]
 				
 			},
@@ -83,26 +83,18 @@
 				]
 			},
 			{ "sequence" : "Q04", 
-				"text" : 	"4. Which items did you purchase?",
 				"text_en" : "4. Which items did you purchase?",
 				"text_es" : "4. ¿Qué productos ha adquirido?",
 				"text_de" : "4. (DE) Which items did you purchase (DE)?",
-				"type" : 	"likert",
-				"scale" : [ {"answer" : 1, "next" : "Q05", "text_en": "Extremely dissatisfied", "text_es": "Extremadamente insatisfecho", "text_de" : "(DE) 1"},
-							{"answer" : 2, "next" : "Q05", "text_en": "Dissatisfied", "text_es": "Insatisfecho", "text_de" : "(DE) 2"},
-							{"answer" : 3, "next" : "Q05", "text_en": "Neutral", "text_es": "Neutral", "text_de" : "(DE) 3"},
-							{"answer" : 4, "next" : "Q05", "text_en": "Satisfied", "text_es": "Satisfecho", "text_de" : "(DE) 4"},
-							{"answer" : 5, "next" : "Q05", "text_en": "Extremely satisfied", "text_es": "Extremadamente satisfecho", "text_de" : "(DE) 5"},
-							{"answer" : 6, "next" : "Q05", "text_en": "No purchase", "text_es": "Sin compra", "text_de" : "(DE) 6"}
-						],
-			  	"options": [ 
-				  { "group": 1, "text": "Coffee", "text_en":"Coffee", "text_es": "Café", "text_de": "Koffie"},
-				  { "group": 2, "text": "Sandwiches", "text_en":"Sandwiches", "text_es": "Sandwich", "text_de": "(DE) 2"},
-				  { "group": 3, "text": "Cakes", "text_en":"Cakes", "text_es": "Tartas", "text_de": "(DE) 3"},
-				  { "group": 4, "text": "Coffee accessories", "text_en":"Coffee accessories", "text_es": "Accesorios del café", "text_de": "(DE) 4"},
-				  { "group": 5, "text": "Merchandise", "text_en":"Merchandise", "text_es": "Mercancías", "text_de": "(DE) 5"},
-				  { "group": 6, "text": "Coffee beans", "text_en":"Coffee beans", "text_es": "Café en grano", "text_de": "(DE) 6"},
-				  { "group": 7, "text": "Other", "text_en":"Other", "text_es": "Otras cosas", "text_de": "(DE) 7"}
+				"type" : 	"checkbox",
+				"options": [ 
+				  { "answer": 1, "next" : "Q05", "text": "Coffee", "text_en":"Coffee", "text_es": "Café", "text_de": "Koffie"},
+				  { "answer": 2, "next" : "Q05", "text": "Sandwiches", "text_en":"Sandwiches", "text_es": "Sandwich", "text_de": "(DE) 2"},
+				  { "answer": 3, "next" : "Q05", "text": "Cakes", "text_en":"Cakes", "text_es": "Tartas", "text_de": "(DE) 3"},
+				  { "answer": 4, "next" : "Q05", "text": "Coffee accessories", "text_en":"Coffee accessories", "text_es": "Accesorios del café", "text_de": "(DE) 4"},
+				  { "answer": 5, "next" : "Q05", "text": "Merchandise", "text_en":"Merchandising", "text_es": "Mercancías", "text_de": "(DE) 5"},
+				  { "answer": 6, "next" : "Q05", "text": "Coffee beans", "text_en":"Coffee beans", "text_es": "Café en grano", "text_de": "(DE) 6"},
+				  { "answer": 7, "next" : "Q05", "text": "Other", "text_en":"Other", "text_es": "Otras cosas", "text_de": "(DE) 7"}
 				]
 			},
 			{ "sequence" : "Q05", 
