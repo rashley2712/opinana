@@ -201,12 +201,11 @@
                 cellWidth = Math.round(100/(upper-lower+1)).toString() + "%";
                 tableRow = document.createElement("tr");
                 for (var index=lower; index<=upper; index++) {
-                    console.log(index);
                     tableData = document.createElement("td");
                     tableData.style.width=cellWidth;
                     tableData.id = questionID + "_" + index;
                     tableData.style.border = "1px solid #999";
-                    tableData.setAttribute("onclick","selectRuler('" + questionID + "','" + index.toString() + "')");
+                    tableData.setAttribute("onclick","selectRuler('" + questionID + "','" + index.toString() + "','" + scale.next + "')");
                     text = document.createTextNode(index.toString());
                     tableData.appendChild(text);
                     tableRow.appendChild(tableData);
@@ -246,7 +245,21 @@
 
             }
 
-        function selectRuler(questionID, value) {
+        function createLongTextElement(questionID, question, container) {
+            const property = "text_" + languageKey;
+            console.log("creating a longtext element");
+            var textbox = document.createElement('textarea');
+            textbox.id = questionID + "_box";
+            textbox.name = questionID;
+            textbox.setAttribute("rows", question.rows);
+            textbox.setAttribute("cols", question.cols);
+            textbox.setAttribute("placeholder", question.placeholder[property]);
+            textbox.setAttribute("onchange","nextQuestion('" + question.next + "')");
+            container.append(textbox);
+
+        }
+
+        function selectRuler(questionID, value, next) {
             var element = document.getElementById(questionID + "_value");
             var oldValue = element.value;
             if (oldValue==value) return;
@@ -257,6 +270,7 @@
             oldCell.style.background=null;
             newCell.style.background="#e9e8e8";
             console.log(element);
+            if (next!=null) nextQuestion(next);
         }
 
         function getLanguageInfo(ISOstring) {
@@ -306,25 +320,25 @@
                         console.log("element to set", element);
                         document.getElementById(element).innerText = text;
                         options = q.options;
-                        console.log(options);
+                        //console.log(options);
                         if (q.type=="radio")
                             for (var o of options) {
                                 element = questionBlock.sequence + "_" + o.answer + "_text";
-                                console.log(element);
-                                console.log(o[property]);
-                                console.log("element to set", element);
+                                //console.log(element);
+                                //console.log(o[property]);
+                                //console.log("element to set", element);
                                 document.getElementById(element).innerText = o[property];
                            }
                         if (q.type=="likert") {
                             for (var s of q.scale) {
                                 element = document.getElementById(questionBlock.sequence + "_" + s.answer);
                                 element.innerText = s[property];
-                                console.log(element, s[property]);
+                                //console.log(element, s[property]);
                             }
                             for (var o of q.options) {
                                 element = document.getElementById(questionBlock.sequence + "_group_" + o.group);
                                 element.innerText = o[property];
-                                console.log(element, o[property]);     
+                                //console.log(element, o[property]);     
                             }
                         }
                         if (q.type=="ruler") {
@@ -332,6 +346,10 @@
                                 element.innerText = q.scale.lower[property];
                                 element = document.getElementById(questionBlock.sequence + "_upper");
                                 element.innerText = q.scale.upper[property];
+                        }
+                        if (q.type=="longtext") {
+                            element = document.getElementById(questionBlock.sequence + "_box");
+                            element.setAttribute("placeholder", q.placeholder[property]);
                         }
                     }
                 }
@@ -410,6 +428,7 @@
             if (question.type=="likert") createLikertElement(questionID, question.scale, question.options, questionParagraph);
             if (question.type=="ruler") createRulerElement(questionID, question.scale, questionParagraph);
             if (question.type=="checkbox") createCheckboxElement(questionID, question.options, questionParagraph);
+            if (question.type=="longtext") createLongTextElement(questionID, question, questionParagraph);
             
             var container = document.getElementById('container');
             container.appendChild(questionParagraph);
@@ -434,13 +453,7 @@
                 }
             }
         }
-        
-
 		</script>
-
-        <style>
-         
-        </style>
     </head>
 
 	<body>

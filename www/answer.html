@@ -116,7 +116,8 @@
                 document.title = formData.answer.title[property];
                 document.getElementById("heading").innerText = formData.answer.heading[property];
                 document.getElementById("paragraph").innerHTML = formData.answer.paragraph[property];
-                document.getElementById("link").innerHTML = formData.answer.link[property];
+                document.getElementById("contact").innerHTML = formData.answer.contact[property];
+                document.getElementById("linkback").innerHTML = formData.answer.link[property];
             }
 
 		</script>
@@ -141,8 +142,9 @@
             <img src="images/donmanuel.png" id="logo" width="60%">
 			<h1><span id="heading"></span></h1>
 		</p>
-        <p id="paragraph">Thank you for your feedback.</p>
-		<p id="link"></p>
+        <div id="paragraph">Thank you for your feedback.</div>
+        <div id="contact"></div>
+		<p id="linkback"></p>
     </p>
     <hr>
     <img src="images/opinana.png" width="30">
