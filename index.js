@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const drive = require('./drive.js');
 const fs = require('fs')
 const path = require('path')
 const serverutils = require('./serverutils.js');
@@ -29,16 +30,21 @@ app.post('/answer', function(request, response) {
   	data.remoteIP = ip;
 	const datetimeStamp = new Date();
 	data.timestamp = serverutils.sqlDateTime(datetimeStamp);
-	var logString = ""
 	response.redirect("/answer.html");
+	
+	// Write a record to a log file
 	var logString = JSON.stringify(data) + "\n";
 	const logFilename = path.join(rootPath, responseLog);
 	fs.appendFile(logFilename, logString, function (err) {
 	  if (err) return console.log(err);
 	  console.log('Updated', logFilename);
 	});
+
 	// also update the sqlite db
-	
+	// to be added
+
+	// update the Google Spreadsheet
+	drive.addRecord(data);
   });
 
 
