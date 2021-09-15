@@ -9,15 +9,15 @@
 	},
 	"introduction" : {
 		"text_en" : "We love our customers and always strive to offer a more enjoyable experience. Please take a moment and let us know how we are doing. Thank you!",
-		"text_es" : "Le agradeceremos que nos dedique un momento para saber cómo lo estamos haciendo. ¡Gracias!",
+		"text_es" : "Nos gustar cuidar a nuestros clientes y nos esforzamos en ofrecer una experiencia más agradable. Le agradeceremos que nos dedique un momento para saber cómo lo estamos haciendo. ¡Gracias!",
 		"text_de" : "Wir lieben unsere Kunden und sind stets bestrebt, ihnen eine angenehme Erfahrung zu bieten. Bitte nehmen Sie sich einen Moment Zeit und lassen Sie uns wissen ob wir unsere Arbeit gut machen. Vielen Dank!"
 	},
 	"answer": {
 		"title" : {"text_en" : "Thank you", "text_es":"¡Gracias!", "text_de": "Danke schön"},
-		"heading" : {"text_en" : "Thank you!", "text_es":"¡Gracias!", "text_de": "Danke schön!"},
+		"heading" : {"text_en" : "Your feedback has been received", "text_es":"Hemos recibido correctamente su respuesta", "text_de": "Danke schön!"},
 		"paragraph" : {
 			"text_en": "<p>Thank you for giving us your feedback. We hope to see you again very soon.</p>", 
-			"text_es": "<p>Muchas gracias por dar su opinión. Esperamos poder verle muy pronto.",
+			"text_es": "<p>Muchas gracias por dar su opinión. Esperamos poder verle muy pronto.</p>",
 			"text_de": "<p>Vielen Dank für Ihr Feedback. Wir hoffen sehr, Sie bald bei uns wiederzusehen.</p> <p>Besuchen Sie unseren <a href='https://www.youtube.com/watch?v=X1JEXRgdYFc&t=7s'>YouTube-Kanal</a>, um mehr über die beste Methode für die Zubereitung von Kaffee bei Ihnen zu Hause zu erfahren.</p>" 
 		},
 		"contact" : {

@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs')
 const path = require('path')
+const serverutils = require('./serverutils.js');
 
 const app = express();
 const port = 3000;
@@ -25,9 +26,11 @@ app.post('/answer', function(request, response) {
 	}
 	console.log("client IP is *********************" + ip);
 	console.log("received data:", data);
-  data.remoteIP = ip;
+  	data.remoteIP = ip;
+	const datetimeStamp = new Date();
+	data.timestamp = serverutils.sqlDateTime(datetimeStamp);
 	var logString = ""
-	response.send("SUCCESS");
+	response.redirect("/answer.html");
 	var logString = JSON.stringify(data) + "\n";
 	const logFilename = path.join(rootPath, responseLog);
 	fs.appendFile(logFilename, logString, function (err) {

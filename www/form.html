@@ -10,6 +10,18 @@
             var languageKey;
             var questionList = [];
             var questionData;
+
+            // Capture any GET parameters from the incoming URL
+            const queryString = window.location.search;
+            console.log("queryString", queryString);
+            const urlParams = new URLSearchParams(queryString);
+            var incomingQueryString = [];
+            for (var key of urlParams.keys()) {
+                console.log(key, urlParams.get(key));
+                incomingQueryString.push({ 'parameter': key, 'value' : urlParams.get(key)});
+            }
+            console.log(JSON.stringify(incomingQueryString));
+
             function getJSON(url, callback) {
 				console.log("calling to fetch:", url);
                 var xhr = new XMLHttpRequest();
@@ -25,6 +37,8 @@
                     };
                 xhr.send();
             };    
+
+
 
             function onSubmit(token) {
                 document.getElementById("form").submit();
@@ -61,28 +75,6 @@
                 renderForm();
                 changeLanguage(languageKey);
                 //console.log("Question status:", questionList);
-			}
-
-			function renderFormOld(err, data) {
-				console.log("Received JSON data...");
-				console.log(data);
-                document.getElementById("logo").src = data.logo;
-				document.getElementById("title").innerText = data.title;
-                document.title = data.title;
-                for (question of data.questions) {
-                    const questionParagraph = document.createElement("p");
-                    const questionContent = document.createTextNode(question[languageKey]);
-                    questionParagraph.appendChild(questionContent);
-                    var newline = document.createElement('br');
-                    questionParagraph.appendChild(newline);
-                
-                    
-                    createRadioElement(question.options, questionParagraph)
-                    
-                    var container = document.getElementById('container');
-                    container.appendChild(questionParagraph);
-                }
-                
 			}
 
             function createRadioElement(questionID, options, container) {
@@ -359,6 +351,10 @@
             property = "text_" + languageKey;
   
             document.getElementById("submit").value = questionData.submit[property];
+
+
+            // Change the user's language hidden input
+            document.getElementById("user_language").value = languageKey;
             
         }
 
@@ -383,8 +379,25 @@
                 
                 var container = document.getElementById('container');
                 container.appendChild(questionParagraph);
-
             }
+
+            // Adding the hidden elements from the incoming URL
+            for (var q of incomingQueryString) {
+                var hiddenElement = document.createElement("input");
+                hiddenElement.type = "hidden";
+                hiddenElement.id = q.parameter;
+                hiddenElement.name = q.parameter;
+                hiddenElement.value = q.value;
+                container.appendChild(hiddenElement);
+            }
+
+            // Also add the user's language to the hidden fields
+            var hiddenElement = document.createElement('input');
+            hiddenElement.type = "hidden";
+            hiddenElement.id = "user_language";
+            hiddenElement.name = "user_language";
+            hiddenElement.value = languageKey;
+            container.appendChild(hiddenElement);           
         }
 
         function nextQuestion(questionID) {
@@ -476,10 +489,10 @@
 		</p>
         <h1 id="heading">[Heading]</h1>
         <p id="introduction">[Introduction]</p>
-        <form id="form" action="answer.html" method="get">
+        <form id="form" action="answer" method="post">
             <div id='container'></div>
             <input type="submit" id="submit" value="Submit"/>
-           
+            
         </form>
     </p>
     <p>
