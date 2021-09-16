@@ -11,6 +11,38 @@
             var languageKey;
             var questionList = [];
             var questionData;
+            var userlocation;
+
+            function getLocation() {
+                var x = document.getElementById("location");
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                } else { 
+                    x.innerHTML = "Geolocation is not supported by this browser.";
+                }
+            }
+
+            function roundString(value, places) {
+                let temp = value * (10 ** places);
+                temp = Math.round(temp);
+                temp = temp / (10**places);
+                return temp.toString();
+            }
+
+            function showPosition(position) {
+                var x = document.getElementById("location");
+                x.innerHTML =  "<a href='' id='maplink'>" + roundString(position.coords.latitude,4) + " : " + roundString(position.coords.longitude,4) + "</a>";
+                var mapURL = "https://www.google.com/maps/@" + position.coords.latitude.toString() + "," +  position.coords.longitude.toString() + ",17z";
+                userlocation = roundString(position.coords.latitude,4) + ", " + roundString(position.coords.longitude,4);
+                var container = document.getElementById('container');
+                var hiddenElement = document.createElement('input');
+                hiddenElement.type = "hidden";
+                hiddenElement.name = "location";
+                hiddenElement.id = "location";
+                hiddenElement.value = userlocation;
+                container.appendChild(hiddenElement);
+                //document.getElementById("maplink").href = mapURL;
+            }
 
             // Capture any GET parameters from the incoming URL
             const queryString = window.location.search;
@@ -474,13 +506,16 @@
 		<table>
             <tr>
                 <td onclick="changeLanguage('en')" style="border: 1px solid white;">
-                    <img id="flagEN" src="images/united-kingdom.png" width="32px" height="32px"></p>
+                    <img id="flagEN" src="images/united-kingdom.png" width="32px" height="32px">
                 </td>
                 <td onclick="changeLanguage('es')" style="border: 1px solid white;">
-                    <img id="flagES" src="images/spain.png" width="32px" height="32px"></p>
+                    <img id="flagES" src="images/spain.png" width="32px" height="32px">
                 </td>
                 <td onclick="changeLanguage('de')" style="border: 1px solid white;">
-                    <img id="flagDE" src="images/germany.png" width="32px" height="32px"></p>
+                    <img id="flagDE" src="images/germany.png" width="32px" height="32px">
+                </td>
+                <td onclick="getLocation()">
+                    <img src="images/pin.png" height="32px"><span class="footer" id="location"></span>
                 </td>
             </tr>
         </table>
