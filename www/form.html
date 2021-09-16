@@ -31,9 +31,9 @@
 
             function showPosition(position) {
                 var x = document.getElementById("location");
-                x.innerHTML =  "<a href='' id='maplink'>" + roundString(position.coords.latitude,4) + " : " + roundString(position.coords.longitude,4) + "</a>";
+                x.innerHTML =  "<a href='' id='maplink'>" + roundString(position.coords.latitude,5) + " : " + roundString(position.coords.longitude,5) + "</a>";
                 var mapURL = "https://www.google.com/maps/@" + position.coords.latitude.toString() + "," +  position.coords.longitude.toString() + ",17z";
-                userlocation = roundString(position.coords.latitude,4) + ", " + roundString(position.coords.longitude,4);
+                userlocation = roundString(position.coords.latitude,5) + ", " + roundString(position.coords.longitude,5);
                 var container = document.getElementById('container');
                 var hiddenElement = document.createElement('input');
                 hiddenElement.type = "hidden";
