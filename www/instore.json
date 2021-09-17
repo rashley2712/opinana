@@ -5,25 +5,25 @@
 	"heading": { 
 		"text_en" : "We want to hear from you.", 
 		"text_es" : "Nos gustaría saber de usted!",
-		"text_de" : "Wir möchten gerne Ihre Opinion kennenlernen."
+		"text_de" : "Wir wollen von euch hören!"
 	},
 	"introduction" : {
 		"text_en" : "We love our customers and always strive to offer a more enjoyable experience. Please take a moment and let us know how we are doing. Thank you!",
 		"text_es" : "Nos gustar cuidar a nuestros clientes y nos esforzamos en ofrecer una experiencia más agradable. Le agradeceremos que nos dedique un momento para saber cómo lo estamos haciendo. ¡Gracias!",
-		"text_de" : "Wir lieben unsere Kunden und sind stets bestrebt, ihnen eine angenehme Erfahrung zu bieten. Bitte nehmen Sie sich einen Moment Zeit und lassen Sie uns wissen ob wir unsere Arbeit gut machen. Vielen Dank!"
+		"text_de" : "Wir lieben unsere Kunden und streben um eine angenehme Erfahrung anzubieten. Bitte nehmen Sie ein moment, und lasst uns wissen wie es uns geht. Danke!"
 	},
 	"answer": {
 		"title" : {"text_en" : "Thank you", "text_es":"¡Gracias!", "text_de": "Danke schön"},
-		"heading" : {"text_en" : "Your feedback has been received", "text_es":"Hemos recibido correctamente su respuesta", "text_de": "Danke schön!"},
+		"heading" : {"text_en" : "Your feedback has been received", "text_es":"Hemos recibido correctamente su respuesta", "text_de": "Euer Feedback ist empfangen worden."},
 		"paragraph" : {
 			"text_en": "<p>Thank you for giving us your feedback. We hope to see you again very soon.</p>", 
 			"text_es": "<p>Muchas gracias por dar su opinión. Esperamos poder verle muy pronto.</p>",
-			"text_de": "<p>Vielen Dank für Ihr Feedback. Wir hoffen sehr, Sie bald bei uns wiederzusehen.</p> <p>Besuchen Sie unseren <a href='https://www.youtube.com/watch?v=X1JEXRgdYFc&t=7s'>YouTube-Kanal</a>, um mehr über die beste Methode für die Zubereitung von Kaffee bei Ihnen zu Hause zu erfahren.</p>" 
+			"text_de": "<p>Danke für den Feedback. Wir hoffen dass wir Sie bald wieder sehen!</p>" 
 		},
 		"contact" : {
-			"text_en" : "<p>We would love to stay in touch with you. Let’s connect!<ul><li><a href='https://instagram.com/elcafededonmanuel?utm_medium=copy_link'>Instagram</a></li><li><a href='https://www.youtube.com/watch?v=X1JEXRgdYFc&t=7s'>YouTube</a></li><li><a href='https://es-la.facebook.com/elcafedonmanuel'>Facebook</a></li></p>",
-			"text_es" : "<p>Nos encantaría seguir cerca de usted. Conectemos!<ul><li><a href='https://instagram.com/elcafededonmanuel?utm_medium=copy_link'>Instagram</a></li><li><a href='https://www.youtube.com/watch?v=X1JEXRgdYFc&t=7s'>YouTube</a></li><li><a href='https://es-la.facebook.com/elcafedonmanuel'>Facebook</a></li></p>",
-			"text_de" : "<p>(DE) We would love to stay in touch with you. Let’s connect!<ul><li><a href='https://instagram.com/elcafededonmanuel?utm_medium=copy_link'>Instagram</a></li><li><a href='https://www.youtube.com/watch?v=X1JEXRgdYFc&t=7s'>YouTube</a></li><li><a href='https://es-la.facebook.com/elcafedonmanuel'>Facebook</a></li></p>"
+			"text_en" : "<p>We would love to stay in touch with you. Let’s connect!<table><tr><td><a href='https://instagram.com/elcafededonmanuel?utm_medium=copy_link'><img src='images/instagram.png'> Instagram</a></td></tr><tr><td><a href='https://www.youtube.com/watch?v=X1JEXRgdYFc&t=7s'><img src='images/youtube.png'> YouTube</a></td></tr><tr><td><a href='https://es-la.facebook.com/elcafedonmanuel'><img src='images/facebook.png'> Facebook</a></td></tr></table></p>",
+			"text_es" : "<p>Nos encantaría seguir cerca de usted. Conectemos!<table><tr><td><a href='https://instagram.com/elcafededonmanuel?utm_medium=copy_link'><img src='images/instagram.png'> Instagram</a></td></tr><tr><td><a href='https://www.youtube.com/watch?v=X1JEXRgdYFc&t=7s'><img src='images/youtube.png'> YouTube</a></td></tr><tr><td><a href='https://es-la.facebook.com/elcafedonmanuel'><img src='images/facebook.png'> Facebook</a></td></tr></table></p>",
+			"text_de" : "<p>Wir würden es Lieben um mit Sie in Kontakt zu bleiben. Lass uns Verbinden!<table><tr><td><a href='https://instagram.com/elcafededonmanuel?utm_medium=copy_link'><img src='images/instagram.png'> Instagram</a></td></tr><tr><td><a href='https://www.youtube.com/watch?v=X1JEXRgdYFc&t=7s'><img src='images/youtube.png'> YouTube</a></td></tr><tr><td><a href='https://es-la.facebook.com/elcafedonmanuel'><img src='images/facebook.png'> Facebook</a></td></tr></table></p>"
 		},
 		"link" : {
 			"text_en": "<a href='form.html'>Click here</a> to return to the form.", 
@@ -38,12 +38,12 @@
 				"text" : 	"1. How often do you visit El Café de Don Manuel?",
 				"text_en" : "1. How often do you visit El Café de Don Manuel?",
 				"text_es" : "1. ¿Con qué frecuencia visita El Café de Don Manuel?",
-				"text_de" : "1. Wie oft besuchen Sie El Café de Don Manuel?",
+				"text_de" : "1. Wie oft besuchen Sie El Cafe de Don Manuel?",
 				"type" : 	"radio",
 			  "options": [ 
-				  { "answer" : 1, "next" : "Q02", "text" : "This is my first time.", "text_en":"This is my first time.", "text_es": "Esta es la primera vez.", "text_de": "Das ist mein erstes Mal."},
+				  { "answer" : 1, "next" : "Q02", "text" : "This is my first time.", "text_en":"This is my first time.", "text_es": "Esta es la primera vez.", "text_de": "Dies ist mein erstes Besuch."},
 				  { "answer" : 2, "next" : "Q02", "text" : "Once per week.", "text_en":"Once per week.", "text_es": "Una vez al semana.", "text_de": "Einmal pro Woche."},
-				  { "answer" : 3, "next" : "Q02", "text" : "More than once per week.", "text_en":"More than once per week.", "text_es": "Más de una vez al semana.", "text_de": "Mehr als einmal pro Woche."}  
+				  { "answer" : 3, "next" : "Q02", "text" : "More than once per week.", "text_en":"More than once per week.", "text_es": "Más de una vez al semana.", "text_de": "Mehrmals der Woche."}  
 				]
 				
 			},
@@ -51,11 +51,11 @@
 				"text" : 	"2. Do you live locally or are you visiting?",
 				"text_en" : "2. Do you live locally or are you visiting?",
 				"text_es" : "2. ¿Vive cerca o está de visita?",
-				"text_de" : "2. Wohnst du vor Ort oder bist du zu Besuch?",
+				"text_de" : "2. Leben Sie lokal oder besuchen Sie?",
 				"type" : 	"radio",
 			  "options": [ 
-				  { "answer": 1, "next" : "Q03_a", "text": "Local", "text_en":"Local", "text_es": "Soy de aqui.", "text_de": "Ich bin lokal."},
-				  { "answer": 2, "next" : "Q03_b", "text": "Visiting", "text_en":"Visiting", "text_es": "Estoy de visita.", "text_de": "Ich besuche."}
+				  { "answer": 1, "next" : "Q03_a", "text": "Local", "text_en":"Local", "text_es": "Soy de aqui.", "text_de": "Lokal"},
+				  { "answer": 2, "next" : "Q03_b", "text": "Visiting", "text_en":"Visiting", "text_es": "Estoy de visita.", "text_de": "Besuchen."}
 				]
 
 			},
@@ -80,17 +80,17 @@
 				"text_de" : "3. Wo wohnst du?",
 				"type" : 	"radio",
 			  "options": [ 
-				  { "answer": 1, "next" : "Q04", "text": "Spain (Mainland)", "text_en":"Spain (Mainland)", "text_es": "España peninsular", "text_de": "Spanische Halbinsel"},
-				  { "answer": 2, "next" : "Q04", "text": "United Kingdom", "text_en":"United Kingdom", "text_es": "Reino Unido", "text_de": "Vereinigtes Königreich"},
+				  { "answer": 1, "next" : "Q04", "text": "Spain (Mainland)", "text_en":"Spain (Mainland)", "text_es": "España peninsular", "text_de": "Spanien"},
+				  { "answer": 2, "next" : "Q04", "text": "United Kingdom", "text_en":"United Kingdom", "text_es": "Reino Unido", "text_de": "Großbritannien"},
 				  { "answer": 3, "next" : "Q04", "text": "Germany", "text_en":"Germany", "text_es": "Alemania", "text_de": "Deutschland"},
 				  { "answer": 4, "next" : "Q04", "text": "France", "text_en":"France", "text_es": "Francia", "text_de": "Frankreich"},
-				  { "answer": 5, "next" : "Q03_d", "text": "Other", "text_en":"Other", "text_es": "Otro país", "text_de": "Ein anderer Ort"}
+				  { "answer": 5, "next" : "Q03_d", "text": "Other", "text_en":"Other", "text_es": "Otro país", "text_de": "Anders"}
 				]
 			},
 			{ "sequence" : "Q03_c", 
 				"text_en" : "3. Where do you live in the Canaries?",
 				"text_es" : "3. Por favor, siéntase libre de compartirnos más información sobre su experiencia. No sea tímido.",
-				"text_de" : "3. (DE) Please feel free to share more about your experience. Don’t be shy",
+				"text_de" : "3. Anders",
 				"type" : "longtext",
 				"rows" : 1,
 				"cols" : 20,
@@ -98,13 +98,13 @@
 				"placeholder" : {
 					"text_en" : "Town or island",
 					"text_es" : "Pueblo o isla",
-					"text_de" : "(DE) town or island"
+					"text_de" : "Standort"
 				}
 			},
 			{ "sequence" : "Q03_d", 
 				"text_en" : "3. From which country are visiting?",
 				"text_es" : "3. De que pais?",
-				"text_de" : "3. (DE) From which country?",
+				"text_de" : "3. Anders",
 				"type" : "longtext",
 				"rows" : 1,
 				"cols" : 20,
@@ -112,67 +112,66 @@
 				"placeholder" : {
 					"text_en" : "Country",
 					"text_es" : "Pais",
-					"text_de" : "(DE) Country"
+					"text_de" : "Standort"
 				}
 			},
 			{ "sequence" : "Q04", 
 				"text_en" : "4. Which items did you purchase?",
 				"text_es" : "4. ¿Qué productos ha adquirido?",
-				"text_de" : "4. (DE) Which items did you purchase (DE)?",
+				"text_de" : "4. Welche Artikel haben Sie gekauft?",
 				"type" : 	"checkbox",
 				"options": [ 
-				  { "answer": 1, "next" : "Q05", "text": "Coffee", "text_en":"Coffee", "text_es": "Café", "text_de": "Koffie"},
-				  { "answer": 2, "next" : "Q05", "text": "Sandwiches", "text_en":"Sandwiches", "text_es": "Sandwich", "text_de": "(DE) 2"},
-				  { "answer": 3, "next" : "Q05", "text": "Cakes", "text_en":"Cakes", "text_es": "Tartas", "text_de": "(DE) 3"},
-				  { "answer": 4, "next" : "Q05", "text": "Coffee accessories", "text_en":"Coffee accessories", "text_es": "Accesorios del café", "text_de": "(DE) 4"},
-				  { "answer": 5, "next" : "Q05", "text": "Merchandise", "text_en":"Merchandising", "text_es": "Mercancías", "text_de": "(DE) 5"},
-				  { "answer": 6, "next" : "Q05", "text": "Coffee beans", "text_en":"Coffee beans", "text_es": "Café en grano", "text_de": "(DE) 6"},
-				  { "answer": 7, "next" : "Q05", "text": "Other", "text_en":"Other", "text_es": "Otras cosas", "text_de": "(DE) 7"}
+				  { "answer": 1, "next" : "Q05", "text": "Coffee", "text_en":"Coffee", "text_es": "Café", "text_de": "Kaffee"},
+				  { "answer": 2, "next" : "Q05", "text": "Sandwiches", "text_en":"Sandwiches", "text_es": "Sandwich", "text_de": "Sandwiches"},
+				  { "answer": 3, "next" : "Q05", "text": "Cakes", "text_en":"Cakes", "text_es": "Tartas", "text_de": "Kuchen"},
+				  { "answer": 4, "next" : "Q05", "text": "Coffee accessories", "text_en":"Coffee accessories", "text_es": "Accesorios del café", "text_de": "Kaffee Zubehör"},
+				  { "answer": 5, "next" : "Q05", "text": "Merchandise", "text_en":"Merchandising", "text_es": "Mercancías", "text_de": "Waren"},
+				  { "answer": 6, "next" : "Q05", "text": "Coffee beans", "text_en":"Coffee beans", "text_es": "Café en grano", "text_de": "Kaffeebohnen"}
 				]
 			},
 			{ "sequence" : "Q05", 
 				"text_en" : "5. How was your experience? ",
 				"text_es" : "5. ¿Cómo ha sido tu experiencia?",
-				"text_de" : "5. (DE) How was your experience?",
+				"text_de" : "5. Wie war eure Erfahrung?",
 				"type" : 	"likert",
-				"scale" : [ {"answer" : 1, "next" : "Q06", "text_en": "Extremely dissatisfied", "text_es": "Extremadamente insatisfecho", "text_de" : "(DE) 1"},
-							{"answer" : 2, "next" : "Q06", "text_en": "Dissatisfied", "text_es": "Insatisfecho", "text_de" : "(DE) 2"},
-							{"answer" : 3, "next" : "Q06", "text_en": "Neutral", "text_es": "Neutral", "text_de" : "(DE) 3"},
-							{"answer" : 4, "next" : "Q06", "text_en": "Satisfied", "text_es": "Satisfecho", "text_de" : "(DE) 4"},
-							{"answer" : 5, "next" : "Q06", "text_en": "Extremely satisfied", "text_es": "Extremadamente satisfecho", "text_de" : "(DE) 5"},
-							{"answer" : 6, "next" : "Q06", "text_en": "No purchase", "text_es": "Sin compra", "text_de" : "(DE) 6"}
+				"scale" : [ {"answer" : 1, "next" : "Q06", "text_en": "Extremely dissatisfied", "text_es": "Extremadamente insatisfecho", "text_de" : "Sehr Unzufrieden"},
+							{"answer" : 2, "next" : "Q06", "text_en": "Dissatisfied", "text_es": "Insatisfecho", "text_de" : "Unzufrieden"},
+							{"answer" : 3, "next" : "Q06", "text_en": "Neutral", "text_es": "Neutral", "text_de" : "Neutral"},
+							{"answer" : 4, "next" : "Q06", "text_en": "Satisfied", "text_es": "Satisfecho", "text_de" : " Zufrieden"},
+							{"answer" : 5, "next" : "Q06", "text_en": "Extremely satisfied", "text_es": "Extremadamente satisfecho", "text_de" : "Sehr Zufrieden"},
+							{"answer" : 6, "next" : "Q06", "text_en": "No purchase", "text_es": "Sin compra", "text_de" : "Nicht gekauft"}
 						],
 			  	"options": [ 
-				  { "group": 1, "text_en":"Staff friendliness", "text_es": "Amabilidad del equipo", "text_de": "Koffie"},
-				  { "group": 2, "text_en":"Staff helpfulness", "text_es": "Atención del equipo", "text_de": "(DE) 2"},
-				  { "group": 3, "text_en":"Staff availability", "text_es": "Disponibilidad del equipo", "text_de": "(DE) 3"},
-				  { "group": 4, "text_en":"Speed of service", "text_es": "Velocidad del servicio", "text_de": "(DE) 4"},
-				  { "group": 5, "text_en":"Overall cleanliness", "text_es": "Limpieza general", "text_de": "(DE) 5"},
-				  { "group": 6, "text_en":"Overall experience", "text_es": "Experiencia general", "text_de": "(DE) 6"}
+				  { "group": 1, "text_en":"Staff friendliness", "text_es": "Amabilidad del equipo", "text_de": "Personal Freundlichkeit"},
+				  { "group": 2, "text_en":"Staff helpfulness", "text_es": "Atención del equipo", "text_de": "Personal Hilfsbereitschaft"},
+				  { "group": 3, "text_en":"Staff availability", "text_es": "Disponibilidad del equipo", "text_de": "Personal Verfügbarkeit"},
+				  { "group": 4, "text_en":"Speed of service", "text_es": "Velocidad del servicio", "text_de": "Geschwindigkeit der Service"},
+				  { "group": 5, "text_en":"Overall cleanliness", "text_es": "Limpieza general", "text_de": "Gesamte Sauberkeit"},
+				  { "group": 6, "text_en":"Overall experience", "text_es": "Experiencia general", "text_de": "Gesamte Erfahrung"}
 				]
 			},
 			{ "sequence" : "Q06", 
 				"text_en" : "6. How likely are you to recommend us to a friend?",
 				"text_es" : "6. ¿Con qué probabilidad nos recomendaría a un amigo?",
-				"text_de" : "6. Wie wahrscheinlich ist es, dass Sie uns an einen Freund weiterempfehlen?",
+				"text_de" : "6. Wie möglich ist es, das Sie, uns zu ihren Freunden empfehlen?",
 				"type" : 	"ruler",
 				"scale" : { 
 						"next" : "Q07", 
-						"lower": { "value" : 0, "text_en": "I won't", "text_es" : "Nuca lo haría", "text_de": "Ich werde es nicht tun"},
-						"upper": { "value": 10, "text_en": "Extremely likely", "text_es" : "Seguro lo recomendaría", "text_de": "Sehr wahrscheinlich" }
+						"lower": { "value" : 0, "text_en": "I won't", "text_es" : "Nuca lo haría", "text_de": "Nicht"},
+						"upper": { "value": 10, "text_en": "Extremely likely", "text_es" : "Seguro lo recomendaría", "text_de": "Sehr" }
 					}
 			},
 			{ "sequence" : "Q07", 
 				"text_en" : "7. Please feel free to share more about your experience. Don’t be shy.",
 				"text_es" : "7. Por favor, siéntase libre de compartirnos más información sobre su experiencia. No sea tímido.",
-				"text_de" : "7. (DE) Please feel free to share more about your experience. Don’t be shy",
+				"text_de" : "7. Bitte fühlen Sie sich wohl um eure Erfahrung zu teilen. Sei nicht schüchtern.",
 				"type" : "longtext",
 				"rows" : 3,
 				"cols" : 40,
 				"placeholder" : {
 					"text_en" : "Enter your feedback here.",
 					"text_es" : "Escríbelo aquí, por favor.",
-					"text_de" : "(DE) Schreiben Sie hier bitte."
+					"text_de" : "Hier schreiben."
 				}
 			}
 		]
