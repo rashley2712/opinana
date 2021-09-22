@@ -9,6 +9,12 @@ const app = express();
 const port = 3000;
 const rootPath = '/var/www/opinana/';
 const responseLog = 'responses.log';
+const basicAuth = require('express-basic-auth');
+   
+app.use(basicAuth({
+	users: { admin: '6031769' },
+	challenge: true // <--- needed to actually show the login dialog!
+}));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
