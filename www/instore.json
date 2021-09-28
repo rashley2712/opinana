@@ -21,9 +21,9 @@
 			"text_de": "<p>Danke für den Feedback. Wir hoffen dass wir Sie bald wieder sehen!</p>" 
 		},
 		"contact" : {
-			"text_en" : "<p>We would love to stay in touch with you. Let’s connect!<table><tr><td><a href='https://instagram.com/elcafededonmanuel?utm_medium=copy_link'><img src='images/instagram.png'> Instagram</a></td></tr><tr><td><a href='https://www.youtube.com/watch?v=X1JEXRgdYFc&t=7s'><img src='images/youtube.png'> YouTube</a></td></tr><tr><td><a href='https://es-la.facebook.com/elcafedonmanuel'><img src='images/facebook.png'> Facebook</a></td></tr></table></p>",
-			"text_es" : "<p>Nos encantaría seguir cerca de usted. Conectemos!<table><tr><td><a href='https://instagram.com/elcafededonmanuel?utm_medium=copy_link'><img src='images/instagram.png'> Instagram</a></td></tr><tr><td><a href='https://www.youtube.com/watch?v=X1JEXRgdYFc&t=7s'><img src='images/youtube.png'> YouTube</a></td></tr><tr><td><a href='https://es-la.facebook.com/elcafedonmanuel'><img src='images/facebook.png'> Facebook</a></td></tr></table></p>",
-			"text_de" : "<p>Wir würden es Lieben um mit Sie in Kontakt zu bleiben. Lass uns Verbinden!<table><tr><td><a href='https://instagram.com/elcafededonmanuel?utm_medium=copy_link'><img src='images/instagram.png'> Instagram</a></td></tr><tr><td><a href='https://www.youtube.com/watch?v=X1JEXRgdYFc&t=7s'><img src='images/youtube.png'> YouTube</a></td></tr><tr><td><a href='https://es-la.facebook.com/elcafedonmanuel'><img src='images/facebook.png'> Facebook</a></td></tr></table></p>"
+			"text_en" : "<p>We would love to stay in touch with you. Let’s connect!<br/><button onclick='location.href=\"https://instagram.com/elcafededonmanuel\";' class='likebutton'><img src='images/instagram.png'>&nbsp;Instagram</button> <button class='likebutton' onclick='location.href=\"https://www.youtube.com/watch?v=X1JEXRgdYFc&t=7s\";'><img src='images/youtube.png'>&nbsp;YouTube</button> <button class='likebutton' onclick='location.href=\"https://es-la.facebook.com/elcafedonmanuel\";'><img src='images/facebook.png'>&nbsp;Facebook</button></p>",
+			"text_es" : "<p>Nos encantaría seguir cerca de usted. Conectemos!<br/><button onclick='location.href=\"https://instagram.com/elcafededonmanuel\";' class='likebutton'><img src='images/instagram.png'>&nbsp;Instagram</button> <button class='likebutton' onclick='location.href=\"https://www.youtube.com/watch?v=X1JEXRgdYFc&t=7s\";'><img src='images/youtube.png'>&nbsp;YouTube</button> <button class='likebutton' onclick='location.href=\"https://es-la.facebook.com/elcafedonmanuel\";'><img src='images/facebook.png'>&nbsp;Facebook</button></p>",
+			"text_de" : "<p>Wir würden es Lieben um mit Sie in Kontakt zu bleiben. Lass uns Verbinden!<br/><button onclick='location.href=\"https://instagram.com/elcafededonmanuel\";' class='likebutton'><img src='images/instagram.png'>&nbsp;Instagram</button> <button class='likebutton' onclick='location.href=\"https://www.youtube.com/watch?v=X1JEXRgdYFc&t=7s\";'><img src='images/youtube.png'>&nbsp;YouTube</button> <button class='likebutton' onclick='location.href=\"https://es-la.facebook.com/elcafedonmanuel\";'><img src='images/facebook.png'>&nbsp;Facebook</button></p>"
 		},
 		"link" : {
 			"text_en": "<a href='form.html'>Click here</a> to return to the form.", 
@@ -35,31 +35,34 @@
 	"questions": 
 		[ 
 			{ "sequence" : "Q01", 
+				"visibleOnLoad": true,
 				"text" : 	"1. How often do you visit El Café de Don Manuel?",
 				"text_en" : "1. How often do you visit El Café de Don Manuel?",
 				"text_es" : "1. ¿Con qué frecuencia visita El Café de Don Manuel?",
 				"text_de" : "1. Wie oft besuchen Sie El Cafe de Don Manuel?",
 				"type" : 	"radio",
 			  "options": [ 
-				  { "answer" : 1, "next" : "Q02", "text" : "This is my first time.", "text_en":"This is my first time.", "text_es": "Esta es la primera vez.", "text_de": "Dies ist mein erstes Besuch."},
-				  { "answer" : 2, "next" : "Q02", "text" : "Once per week.", "text_en":"Once per week.", "text_es": "Una vez al semana.", "text_de": "Einmal pro Woche."},
-				  { "answer" : 3, "next" : "Q02", "text" : "More than once per week.", "text_en":"More than once per week.", "text_es": "Más de una vez al semana.", "text_de": "Mehrmals der Woche."}  
+				  { "answer" : 1, "next" : "Q02", "text" : "This is my first time", "text_en":"This is my first time", "text_es": "Esta es la primera vez", "text_de": "Dies ist mein erstes Besuch"},
+				  { "answer" : 2, "next" : "Q02", "text" : "Once per week", "text_en":"Once per week", "text_es": "Una vez al semana", "text_de": "Einmal pro Woche"},
+				  { "answer" : 3, "next" : "Q02", "text" : "More than once per week", "text_en":"More than once per week", "text_es": "Más de una vez al semana", "text_de": "Mehrmals der Woche"}  
 				]
 				
 			},
 			{ "sequence" : "Q02", 
+				"visibleOnLoad": true,
 				"text" : 	"2. Do you live locally or are you visiting?",
 				"text_en" : "2. Do you live locally or are you visiting?",
 				"text_es" : "2. ¿Vive cerca o está de visita?",
 				"text_de" : "2. Leben Sie lokal oder besuchen Sie?",
 				"type" : 	"radio",
 			  "options": [ 
-				  { "answer": 1, "next" : "Q03_a", "text": "Local", "text_en":"Local", "text_es": "Soy de aqui.", "text_de": "Lokal"},
-				  { "answer": 2, "next" : "Q03_b", "text": "Visiting", "text_en":"Visiting", "text_es": "Estoy de visita.", "text_de": "Besuchen."}
+				  { "answer": 1, "next" : "Q03_a", "text": "Local", "text_en":"Local", "text_es": "Soy de aqui", "text_de": "Lokal"},
+				  { "answer": 2, "next" : "Q03_b", "text": "Visiting", "text_en":"Visiting", "text_es": "Estoy de visita", "text_de": "Besuchen"}
 				]
 
 			},
 			{ "sequence" : "Q03_a", 
+				"visibleOnLoad": true,
 				"text" : 	"3. Where do you live?",
 				"text_en" : "3. Where do you live?",
 				"text_es" : "3. ¿Donde vives?",
@@ -74,6 +77,7 @@
 				]
 			},
 			{ "sequence" : "Q03_b", 
+				"visibleOnLoad": false,
 				"text" : 	"3. Where do you live?",
 				"text_en" : "3. Where do you live?",
 				"text_es" : "3. ¿Donde vives?",
@@ -88,6 +92,7 @@
 				]
 			},
 			{ "sequence" : "Q03_c", 
+				"visibleOnLoad": false,
 				"text_en" : "3. Where do you live in the Canaries?",
 				"text_es" : "3. Por favor, siéntase libre de compartirnos más información sobre su experiencia. No sea tímido.",
 				"text_de" : "3. Anders",
@@ -102,6 +107,7 @@
 				}
 			},
 			{ "sequence" : "Q03_d", 
+				"visibleOnLoad": false,
 				"text_en" : "3. From which country are visiting?",
 				"text_es" : "3. De que pais?",
 				"text_de" : "3. Anders",
@@ -116,6 +122,7 @@
 				}
 			},
 			{ "sequence" : "Q04", 
+				"visibleOnLoad": true,
 				"text_en" : "4. Which items did you purchase?",
 				"text_es" : "4. ¿Qué productos ha adquirido?",
 				"text_de" : "4. Welche Artikel haben Sie gekauft?",
@@ -130,16 +137,16 @@
 				]
 			},
 			{ "sequence" : "Q05", 
+				"visibleOnLoad": true,
 				"text_en" : "5. How was your experience? ",
 				"text_es" : "5. ¿Cómo ha sido tu experiencia?",
 				"text_de" : "5. Wie war eure Erfahrung?",
 				"type" : 	"likert",
-				"scale" : [ {"answer" : 1, "next" : "Q06", "text_en": "Extremely dissatisfied", "text_es": "Extremadamente insatisfecho", "text_de" : "Sehr Unzufrieden"},
-							{"answer" : 2, "next" : "Q06", "text_en": "Dissatisfied", "text_es": "Insatisfecho", "text_de" : "Unzufrieden"},
-							{"answer" : 3, "next" : "Q06", "text_en": "Neutral", "text_es": "Neutral", "text_de" : "Neutral"},
-							{"answer" : 4, "next" : "Q06", "text_en": "Satisfied", "text_es": "Satisfecho", "text_de" : " Zufrieden"},
-							{"answer" : 5, "next" : "Q06", "text_en": "Extremely satisfied", "text_es": "Extremadamente satisfecho", "text_de" : "Sehr Zufrieden"},
-							{"answer" : 6, "next" : "Q06", "text_en": "No purchase", "text_es": "Sin compra", "text_de" : "Nicht gekauft"}
+				"scale" : [ {"answer" : 1, "next" : "Q06", "text_en": "images/satisfy01.png", "text_es": "images/satisfy01.png", "text_de" : "images/satisfy01.png"},
+							{"answer" : 2, "next" : "Q06", "text_en": "images/satisfy02.png", "text_es": "images/satisfy02.png", "text_de" : "images/satisfy02.png"},
+							{"answer" : 3, "next" : "Q06", "text_en": "images/satisfy03.png", "text_es": "images/satisfy03.png", "text_de" : "images/satisfy03.png"},
+							{"answer" : 4, "next" : "Q06", "text_en": "images/satisfy04.png", "text_es": "images/satisfy04.png", "text_de" : "images/satisfy04.png"},
+							{"answer" : 5, "next" : "Q06", "text_en": "images/satisfy05.png", "text_es": "images/satisfy05.png", "text_de" : "images/satisfy05.png"}
 						],
 			  	"options": [ 
 				  { "group": 1, "text_en":"Staff friendliness", "text_es": "Amabilidad del equipo", "text_de": "Personal Freundlichkeit"},
@@ -151,6 +158,7 @@
 				]
 			},
 			{ "sequence" : "Q06", 
+				"visibleOnLoad": true,
 				"text_en" : "6. How likely are you to recommend us to a friend?",
 				"text_es" : "6. ¿Con qué probabilidad nos recomendaría a un amigo?",
 				"text_de" : "6. Wie möglich ist es, das Sie, uns zu ihren Freunden empfehlen?",
@@ -162,6 +170,7 @@
 					}
 			},
 			{ "sequence" : "Q07", 
+				"visibleOnLoad": true,
 				"text_en" : "7. Please feel free to share more about your experience. Don’t be shy.",
 				"text_es" : "7. Por favor, siéntase libre de compartirnos más información sobre su experiencia. No sea tímido.",
 				"text_de" : "7. Bitte fühlen Sie sich wohl um eure Erfahrung zu teilen. Sei nicht schüchtern.",
@@ -169,9 +178,9 @@
 				"rows" : 3,
 				"cols" : 40,
 				"placeholder" : {
-					"text_en" : "Enter your feedback here.",
-					"text_es" : "Escríbelo aquí, por favor.",
-					"text_de" : "Hier schreiben."
+					"text_en" : "Enter your feedback here",
+					"text_es" : "Escríbelo aquí, por favor",
+					"text_de" : "Hier schreiben"
 				}
 			}
 		]

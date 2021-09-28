@@ -94,17 +94,18 @@
             }
 
             function languagesLoaded(err, data) {
-                console.log("Languages loaded...");
+                console.log("Question data loaded...");
                 console.log(data);
                 questionData = data;
                 questionList = [];
                 for (q of questionData.questions) {
                     console.log(q.sequence);
-                    var status = { sequence: q.sequence, visible: false};
+                    var status = { sequence: q.sequence, visible: q.visibleOnLoad};
                     questionList.push(status); 
                 }
-                questionList[0].visible = true;
-                document.title = questionData.title;
+                
+				
+				document.title = questionData.title;
                 renderForm();
                 changeLanguage(languageKey);
                 //console.log("Question status:", questionList);
@@ -150,7 +151,9 @@
                 for (var s of scale) {
                     // console.log(s);
                     tableHeader = document.createElement("td");
-                    tableHeader.id = questionID + "_" + s.answer;
+                    //tableHeader.id = questionID + "_" + s.answer;
+					console.log("questionID", questionID);
+                    tableHeader.id = "test";
                     //scaleLabel = document.createTextNode(s[property]);
                     //scaleLabel = document.createTextNode("<i>rest</i>");
                     imageElement = document.createElement("img");
@@ -360,9 +363,10 @@
                            }
                         if (q.type=="likert") {
                             for (var s of q.scale) {
-                                element = document.getElementById(questionBlock.sequence + "_" + s.answer);
+								let elementName = questionBlock.sequence + "_" + s.answer;
+                                element = document.getElementById(elementName);
+                                console.log("Likert change language:", elementName, element, s[property]);
                                 element.innerHTML = "<img src='" + s[property] + "' width='25px'/>";
-                                //console.log(element, s[property]);
                             }
                             for (var o of q.options) {
                                 element = document.getElementById(questionBlock.sequence + "_group_" + o.group);
@@ -370,6 +374,15 @@
                                 //console.log(element, o[property]);     
                             }
                         }
+						if (q.type=="checkbox") {
+							console.log("translating checkbox");
+							for (var o of options) {
+								let elementName = questionBlock.sequence + "_" + o.answer + "_text";
+								console.log(o, elementName);
+								element = document.getElementById(elementName);
+								element.innerText = o[property];
+							}
+						}
                         if (q.type=="ruler") {
                                 element = document.getElementById(questionBlock.sequence + "_lower");
                                 element.innerText = q.scale.lower[property];
@@ -413,7 +426,11 @@
                 var newline = document.createElement('br');
                 questionParagraph.appendChild(newline);
                 if (question.type=="radio") createRadioElement(questionID.sequence, question.options, questionParagraph)
-                
+				if (question.type=="likert") createLikertElement(questionID.sequence, question.scale, question.options, questionParagraph);
+            	if (question.type=="ruler") createRulerElement(questionID.sequence, question.scale, questionParagraph);
+            	if (question.type=="checkbox") createCheckboxElement(questionID.sequence, question.options, questionParagraph);
+            	if (question.type=="longtext") createLongTextElement(questionID.sequence, question, questionParagraph);
+                     
                 var container = document.getElementById('container');
                 container.appendChild(questionParagraph);
             }

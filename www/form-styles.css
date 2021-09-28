@@ -27,8 +27,12 @@ ul {list-style:circle;}
 
 ol {list-style:decimal;}
 
+.likebutton {
+	display: inline-flex;
+	align-items: center; 
+  }
 
 p {
-	line-height: 20px;   /* within paragraph */
-	margin-bottom: 30px; /* between paragraphs */
+	line-height: 1.8;   /* within paragraph */
+	margin-bottom: 50px; /* between paragraphs */
 	};
