@@ -1,6 +1,20 @@
+@font-face {
+	font-family: "neuebold";
+	src: url('images/webfont.woff') format("woff");
+	font-weight: 100;
+	font-style: normal;
+}
+
+@font-face {
+    font-family: 'oswald';
+    src: url('images/Oswald-Regular.ttf');
+}
+
+
 body {
 	font-size:100%;
-	font-family:verdana,arial,'sans serif';
+	font-family: oswald;
+
 	background-repeat:repeat-x;
 	background-color:#fffbf2;
 	color:#251b03;

@@ -4,12 +4,12 @@
 	"bgcolor": "#fffbf2",
 	"heading": { 
 		"text_en" : "We want to hear from you.", 
-		"text_es" : "Nos gustaría saber de usted!",
+		"text_es" : "Nos gustaría saber de usted",
 		"text_de" : "Wir wollen von euch hören!"
 	},
 	"introduction" : {
 		"text_en" : "We love our customers and always strive to offer a more enjoyable experience. Please take a moment and let us know how we are doing. Thank you!",
-		"text_es" : "Nos gustar cuidar a nuestros clientes y nos esforzamos en ofrecer una experiencia más agradable. Le agradeceremos que nos dedique un momento para saber cómo lo estamos haciendo. ¡Gracias!",
+		"text_es" : "Nos gusta cuidar a nuestros clientes y nos esforzamos en ofrecer una experiencia más agradable. Le agradeceremos que nos dedique un momento para saber cómo lo estamos haciendo. ¡Gracias!",
 		"text_de" : "Wir lieben unsere Kunden und streben um eine angenehme Erfahrung anzubieten. Bitte nehmen Sie ein moment, und lasst uns wissen wie es uns geht. Danke!"
 	},
 	"answer": {
@@ -17,7 +17,7 @@
 		"heading" : {"text_en" : "Your feedback has been received", "text_es":"Hemos recibido correctamente su respuesta", "text_de": "Euer Feedback ist empfangen worden."},
 		"paragraph" : {
 			"text_en": "<p>Thank you for giving us your feedback. We hope to see you again very soon.</p>", 
-			"text_es": "<p>Muchas gracias por dar su opinión. Esperamos poder verle muy pronto.</p>",
+			"text_es": "<p>Muchas gracias por dar su opinión. Esperamos volver a verle muy pronto.</p>",
 			"text_de": "<p>Danke für den Feedback. Wir hoffen dass wir Sie bald wieder sehen!</p>" 
 		},
 		"contact" : {
@@ -43,8 +43,8 @@
 				"type" : 	"radio",
 			  "options": [ 
 				  { "answer" : 1, "next" : "Q02", "text" : "This is my first time", "text_en":"This is my first time", "text_es": "Esta es la primera vez", "text_de": "Dies ist mein erstes Besuch"},
-				  { "answer" : 2, "next" : "Q02", "text" : "Once per week", "text_en":"Once per week", "text_es": "Una vez al semana", "text_de": "Einmal pro Woche"},
-				  { "answer" : 3, "next" : "Q02", "text" : "More than once per week", "text_en":"More than once per week", "text_es": "Más de una vez al semana", "text_de": "Mehrmals der Woche"}  
+				  { "answer" : 2, "next" : "Q02", "text" : "Once per week", "text_en":"Once per week", "text_es": "Una vez a la semana", "text_de": "Einmal pro Woche"},
+				  { "answer" : 3, "next" : "Q02", "text" : "More than once per week", "text_en":"More than once per week", "text_es": "Más de una vez a la semana", "text_de": "Mehrmals der Woche"}  
 				]
 				
 			},
@@ -94,7 +94,7 @@
 			{ "sequence" : "Q03_c", 
 				"visibleOnLoad": false,
 				"text_en" : "3. Where do you live in the Canaries?",
-				"text_es" : "3. Por favor, siéntase libre de compartirnos más información sobre su experiencia. No sea tímido.",
+				"text_es" : "3. ¿Donde vives?",
 				"text_de" : "3. Anders",
 				"type" : "longtext",
 				"rows" : 1,
@@ -102,14 +102,14 @@
 				"next" : "Q04",
 				"placeholder" : {
 					"text_en" : "Town or island",
-					"text_es" : "Pueblo o isla",
+					"text_es" : "Ciudad o isla",
 					"text_de" : "Standort"
 				}
 			},
 			{ "sequence" : "Q03_d", 
 				"visibleOnLoad": false,
 				"text_en" : "3. From which country are visiting?",
-				"text_es" : "3. De que pais?",
+				"text_es" : "3. ¿De que pais?",
 				"text_de" : "3. Anders",
 				"type" : "longtext",
 				"rows" : 1,
@@ -117,7 +117,7 @@
 				"next" : "Q04",
 				"placeholder" : {
 					"text_en" : "Country",
-					"text_es" : "Pais",
+					"text_es" : "País",
 					"text_de" : "Standort"
 				}
 			},
@@ -131,8 +131,8 @@
 				  { "answer": 1, "next" : "Q05", "text": "Coffee", "text_en":"Coffee", "text_es": "Café", "text_de": "Kaffee"},
 				  { "answer": 2, "next" : "Q05", "text": "Sandwiches", "text_en":"Sandwiches", "text_es": "Sandwich", "text_de": "Sandwiches"},
 				  { "answer": 3, "next" : "Q05", "text": "Cakes", "text_en":"Cakes", "text_es": "Tartas", "text_de": "Kuchen"},
-				  { "answer": 4, "next" : "Q05", "text": "Coffee accessories", "text_en":"Coffee accessories", "text_es": "Accesorios del café", "text_de": "Kaffee Zubehör"},
-				  { "answer": 5, "next" : "Q05", "text": "Merchandise", "text_en":"Merchandising", "text_es": "Mercancías", "text_de": "Waren"},
+				  { "answer": 4, "next" : "Q05", "text": "Coffee accessories", "text_en":"Coffee accessories", "text_es": "Accesorios de la cafetera", "text_de": "Kaffee Zubehör"},
+				  { "answer": 5, "next" : "Q05", "text": "Merchandise", "text_en":"Merchandising", "text_es": "Merchandising", "text_de": "Waren"},
 				  { "answer": 6, "next" : "Q05", "text": "Coffee beans", "text_en":"Coffee beans", "text_es": "Café en grano", "text_de": "Kaffeebohnen"}
 				]
 			},
@@ -172,14 +172,14 @@
 			{ "sequence" : "Q07", 
 				"visibleOnLoad": true,
 				"text_en" : "7. Please feel free to share more about your experience. Don’t be shy.",
-				"text_es" : "7. Por favor, siéntase libre de compartirnos más información sobre su experiencia. No sea tímido.",
+				"text_es" : "7. Por favor, comparta más información sobre su experiencia. No sea tímido.",
 				"text_de" : "7. Bitte fühlen Sie sich wohl um eure Erfahrung zu teilen. Sei nicht schüchtern.",
 				"type" : "longtext",
 				"rows" : 3,
 				"cols" : 40,
 				"placeholder" : {
 					"text_en" : "Enter your feedback here",
-					"text_es" : "Escríbelo aquí, por favor",
+					"text_es" : "Escríbalo aquí",
 					"text_de" : "Hier schreiben"
 				}
 			}
